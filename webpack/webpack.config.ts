@@ -1,7 +1,7 @@
 import path from 'path';
 
 import { CleanWebpackPlugin } from 'clean-webpack-plugin';
-import CopyPlugin from 'copy-webpack-plugin';
+// import CopyPlugin from 'copy-webpack-plugin';
 import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import isCI from 'is-ci';
@@ -27,20 +27,7 @@ export default (
     let extension = 'js';
     if (
       [
-        'config',
-        'coverage',
-        'eureka',
-        'jobs',
-        'oopsyraidsyLive',
-        'oopsyraidsySummary',
-        'pullcounter',
-        'radar',
-        'raidboss',
-        'raidemulator',
-        'test',
-        'timerbarTest',
-        'buff',
-        'settings',
+        'check',
       ].includes(key)
     )
       extension = 'ts';
@@ -59,14 +46,14 @@ export default (
     new CleanWebpackPlugin(),
     new MiniCssExtractPlugin(),
     ...htmlPluginRules,
-    new CopyPlugin({
-      patterns: [
-        {
-          // copy sounds and images
-          from: 'resources/images/**/*',
-        }
-      ],
-    }),
+    // new CopyPlugin({
+    //   patterns: [
+    //     // {
+    //     //   // copy sounds and images
+    //     //   from: 'resources/images/**/*',
+    //     // }
+    //   ],
+    // }),
   ];
 
   if (!isCI)
