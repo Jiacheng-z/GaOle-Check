@@ -1,13 +1,6 @@
-/**
- * 单卡卡片数据
- */
-export interface Card {
-    id: string; // PM,ID 同PM ID相同, 特殊形态也算
-    star: number; // 卡片星级 1,2,3,4,5,0(幸运卡)
-    name: string; // 宝可梦名称
-}
+// import {Card} from '../types/card'
 
-const card: { [s: string]: Card } = {
+const data = {
     '花漾海狮_2': { // 6
         id: '729',
         star: 2,
@@ -46,4 +39,4 @@ const card: { [s: string]: Card } = {
 
 } as const
 
-export default card;
+export default data;

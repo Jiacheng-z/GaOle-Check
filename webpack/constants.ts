@@ -1,19 +1,13 @@
-export const cactbotModules = {
-  buff: 'Buff/buff',
-  settings: 'Buff/settings'
+export const checkModules = {
+  check: 'check/check',
 };
 
-export const cactbotChunks = {};
+export const checkChunks = {};
 
-export const cactbotHtmlChunksMap = {
-  'Buff/buff.html': {
+export const checkHtmlChunksMap = {
+  'check/check.html': {
     chunks: [
-      cactbotModules.buff,
+      checkModules.check,
     ],
-  },
-  'Buff/settings.html': {
-    chunks: [
-        cactbotModules.settings,
-    ]
   }
 };

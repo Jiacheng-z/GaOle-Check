@@ -14,14 +14,14 @@ interface Configuration extends WebpackConfiguration {
 }
 
 export default (
-  { cactbotModules, cactbotChunks, cactbotHtmlChunksMap }: {
-    cactbotModules: { [module: string]: string };
-    cactbotChunks: { [module: string]: string };
-    cactbotHtmlChunksMap: { [html: string]: HtmlWebpackPlugin.Options };
+  { checkModules, checkChunks, checkHtmlChunksMap }: {
+    checkModules: { [module: string]: string };
+    checkChunks: { [module: string]: string };
+    checkHtmlChunksMap: { [html: string]: HtmlWebpackPlugin.Options };
   },
 ): Configuration => {
   const entries: { [module: string]: string } = {};
-  Object.entries(cactbotModules).forEach(([key, module]) => {
+  Object.entries(checkModules).forEach(([key, module]) => {
     // TODO: Remove when everything is TypeScript, convert to:
     // entries[module] = `./${module}.ts`;
     let extension = 'js';
@@ -47,7 +47,7 @@ export default (
     entries[module] = `./${module}.${extension}`;
   });
 
-  const htmlPluginRules = Object.entries(cactbotHtmlChunksMap).map(([file, config]) => {
+  const htmlPluginRules = Object.entries(checkHtmlChunksMap).map(([file, config]) => {
     return new HtmlWebpackPlugin({
       template: file,
       filename: file,
@@ -79,12 +79,12 @@ export default (
         cacheGroups: {
           'raidboss_data': {
             test: /[\\/]ui[\\/]raidboss[\\/]data[\\/]/,
-            name: cactbotChunks.raidbossData,
+            name: checkChunks.raidbossData,
             chunks: 'all',
           },
           'oopsyraidsy_data': {
             test: /[\\/]ui[\\/]oopsyraidsy[\\/]data[\\/]/,
-            name: cactbotChunks.oopsyraidsyData,
+            name: checkChunks.oopsyraidsyData,
             chunks: 'all',
           },
         },

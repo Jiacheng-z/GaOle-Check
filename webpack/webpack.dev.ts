@@ -1,21 +1,21 @@
 import { mergeWithRules } from 'webpack-merge';
 
-import { cactbotChunks, cactbotHtmlChunksMap, cactbotModules } from './constants';
+import { checkChunks, checkHtmlChunksMap, checkModules } from './constants';
 import generateConfig from './webpack.config';
 
 // Add timerbar_test.html
 const cactbotModulesOverride = {
-  ...cactbotModules,
+  ...checkModules,
 };
 
 const cactbotHtmlChunksMapOverride = {
-  ...cactbotHtmlChunksMap,
+  ...checkHtmlChunksMap,
 };
 
 const baseConfig = generateConfig({
-  cactbotModules: cactbotModulesOverride,
-  cactbotChunks: cactbotChunks,
-  cactbotHtmlChunksMap: cactbotHtmlChunksMapOverride,
+  checkModules: cactbotModulesOverride,
+  checkChunks: checkChunks,
+  checkHtmlChunksMap: cactbotHtmlChunksMapOverride,
 });
 
 const tsConfigOverride = {
