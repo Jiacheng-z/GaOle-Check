@@ -96,6 +96,14 @@ class Row {
                 default:
                     break;
             }
+            if (g.s !== undefined) {
+                if (g.s.type == 1) { // 已出现
+                    trlight = " table-secondary"
+                }
+                if (g.s.type == 2) { // 已捕获
+                    trlight = " table-secondary"
+                }
+            }
 
             let tr = document.createElement("tr");
             tr.setAttribute("class", "tr-row" + trlight)
@@ -191,6 +199,18 @@ export class Table {
         l.sort(function (i, j) {
             let a = i.getScore();
             let b = j.getScore();
+            if (a == b) {
+                //按照title算
+                if (i.title > j.title) {
+                    return 1
+                }
+                if (i.title === j.title) {
+                    return 0
+                }
+                if (i.title < j.title) {
+                    return -1
+                }
+            }
             return b - a;
         })
         // 清空

@@ -81,7 +81,13 @@ export class Filter {
         if (!isset) {
             this.selectList.push({value, type})
         }
-
+        // sleepSync(1);
         this.table.DrawTable(this.selectList);
     }
 }
+
+// function sleepSync(ttl: number) {
+//     const now = Date.now();
+//     ttl *= 100;
+//     while (Date.now() - now < ttl) {}
+// }
