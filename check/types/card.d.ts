@@ -18,4 +18,4 @@ export interface Season {
     [key: string]: any
 }
 
-type SItem<T, U> = { value: T, type: U };
+export type SItem<T, U> = { value: T, type: U };

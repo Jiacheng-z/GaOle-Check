@@ -1,9 +1,8 @@
 import {SItem, Card} from "./types/card";
 import {Data, optionValue} from "./data/data";
-import {Filter} from "./filter";
+import {filterObj} from "./check";
 
 class Row {
-    public _f: Filter;
     public title: string;
     private cards: Card[];
     private item: SItem<string, number>[];
@@ -12,7 +11,6 @@ class Row {
     public score: number = 0; // 最终得分
 
     constructor(title: string, cards: Card[], item: SItem<string, number>[]) {
-        this._f = f;
         this.title = title;
         this.cards = cards;
         this.item = item;
@@ -25,6 +23,9 @@ class Row {
 
         let vs: { [s: string]: SItem<string, number> } = {};
         for (const t of this.item) {
+            if (t.type == 0) {
+                continue
+            }
             vs[t.value] ??= t;
         }
 
@@ -46,7 +47,7 @@ class Row {
         // 检查连续, 连续多加分
         for (let i = 0; i < this.cardGroup.length; i++) {
             let g = this.cardGroup[i];
-            if (g && g.s !== undefined) { // 被选中，检查后一个是否被选中
+            if (g && g.s !== undefined && g.s.type in [1, 2]) { // 被选中，检查后一个是否被选中
                 let next = i + 1;
                 if (next < this.cardGroup.length) {
                     let nn = this.cardGroup[next];
@@ -71,6 +72,14 @@ class Row {
         let doc = document.createElement("table")
         doc.setAttribute("class", "table table-hover g-6")
         div.append(doc);
+        let thead = document.createElement("thead");
+        let tr = document.createElement("tr");
+        let th1 = document.createElement("th")
+        let th2 = document.createElement("th")
+        th2.innerText = this.title;
+        let th3 = document.createElement("th")
+        tr.append(th1, th2, th3)
+        thead.append(tr)
 
         let body = document.createElement("tbody")
 
@@ -121,19 +130,35 @@ class Row {
             let btn = document.createElement("button");
             btn.setAttribute("class", "btn " + btnc + " btn-sm td-btn")
             btn.innerText = btnText
-            // TODO:: 绑定函数
-            btn.addEventListener("click", function () {
-                this._f.UpdateSelect(optionValue(g.c), 1)
-            })
+            if (g.s !== undefined) {
+                if (g.s.type == 0) { // 未出现
+                    btn.addEventListener("click", function () {
+                        filterObj.UpdateSelect(optionValue(g.c), 1)
+                    })
+                }
+                if (g.s.type == 1) { // 已出现
+                    btn.addEventListener("click", function () {
+                        filterObj.UpdateSelect(optionValue(g.c), 2)
+                    })
+                }
+                if (g.s.type == 2) { // 已捕获
+                    btn.addEventListener("click", function () {
+                        filterObj.UpdateSelect(optionValue(g.c), 0)
+                    })
+                }
+            } else {
+                btn.addEventListener("click", function () {
+                    filterObj.UpdateSelect(optionValue(g.c), 1)
+                })
+            }
 
             tdp.append(btn);
 
             tr.append(th, td, tdp);
             body.append(tr);
         }
-        doc.append(body);
+        doc.append(thead, body);
 
-        console.log(doc);
         return div;
     }
 }

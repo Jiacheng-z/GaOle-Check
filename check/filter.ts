@@ -23,8 +23,7 @@ export class Filter {
     }
 
     public starChange() {
-        for(let i = this.sltPM.options.length - 1 ; i >= 0 ; i--)
-        {
+        for (let i = this.sltPM.options.length - 1; i >= 0; i--) {
             this.sltPM.remove(i)
         }
 

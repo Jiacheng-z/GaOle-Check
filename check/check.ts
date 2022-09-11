@@ -1,6 +1,8 @@
 import './check.css';
 import {Filter} from "./filter";
 
+export var filterObj: any;
+
 function main() {
     // TODO::载入数据
     // TODO::生成下来菜单
@@ -14,6 +16,8 @@ function main() {
 
     if (star) {
         let f = new Filter(star, pm);
+        filterObj = f;
+
         star.addEventListener("change", function () {
             f.starChange()
         })
