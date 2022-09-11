@@ -1,33 +1,88 @@
+import {Data, optionValue} from "./data/data"
+import {Card, SItem} from "./types/card";
+import {Table} from "./table";
+
+
 /**
  * 生成下来选单逻辑
  */
 export class Filter {
-    private checkContainer: HTMLElement;
+    private sltStar: HTMLSelectElement;
+    private sltPM: HTMLSelectElement;
 
-    constructor() {
-        const container = document.getElementById('check-container');
-        if (!container)
-            throw "找不到初始容器";
+    private starPMs: { [s: string]: Card[] } = {};  // 星级列表
+    private selectList: SItem<string, number>[] = []; // 已选宝可梦列表
+    private table: Table;
 
-        this.checkContainer = container;
+    constructor(s: HTMLSelectElement, p: HTMLSelectElement) {
+        this.sltStar = s;
+        this.sltPM = p;
 
-        // 星级下拉
-        this.checkContainer.append(this.helpCreateSelect(['5', '4', '3', '2', '1', '0'], 'starSelect'))
-        // 宝可梦下拉
-        this.checkContainer.append(this.helpCreateSelect(['???'], 'pmSelect'))
+        this.initStarPMList();
+        this.table = new Table();
     }
 
-    private helpCreateSelect(selectArray: string[], id: string) {
-        var selectList = document.createElement("select");
-        selectList.id = id;
-
-        //Create and append the options
-        for (var i = 0; i < selectArray.length; i++) {
-            var option = document.createElement("option");
-            option.value = selectArray[i] as string;
-            option.text = selectArray[i] as string;
-            selectList.appendChild(option);
+    public starChange() {
+        for (let i = 0; i < this.sltPM.length; i++) {
+            // @ts-ignore
+            this.sltPM.removeChild(this.sltPM[i])
+            this.sltPM.remove(i)
         }
-        return selectList;
+
+        let cs = this.starPMs[Number(this.sltStar.value)]
+
+        if (cs) {
+            for (const c of cs) {
+                let option = document.createElement("option");
+                option.value = optionValue(c);
+                option.text = c.id + '-' + c.name as string;
+                this.sltPM.appendChild(option);
+            }
+        }
+    }
+
+    private initStarPMList() {
+        for (const s of Data.data) {
+            for (const [_, cards] of Object.entries(s.list)) {
+                for (const pm of cards) {
+                    this.starPMs[pm.star] ??= [];
+                    this.starPMs[pm.star]?.push(pm)
+                }
+            }
+        }
+
+        // 排序 编号倒序
+        for (let [s, cards] of Object.entries(this.starPMs)) {
+            cards.sort(function (i, j) {
+                let a = Number(i.id);
+                let b = Number(j.id);
+                return b - a;
+            })
+            this.starPMs[s] = cards
+        }
+    }
+
+    public CleanSelect() {
+        this.selectList = [];
+    }
+
+    public UpdateSelect(value: string, type: number) {
+        if (value === '') {
+            return
+        }
+        let isset = false
+        for (let v of this.selectList) {
+            if (value === v.value) {
+                isset = true
+                if (type !== v.type) {
+                    v.type = type
+                }
+            }
+        }
+        if (!isset) {
+            this.selectList.push({value, type})
+        }
+
+        this.table.DrawTable(this.selectList);
     }
 }

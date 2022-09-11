@@ -197,15 +197,376 @@ ansiHTML.reset()
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _check_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./check.css */ "./check/check.css");
- // import {Filter} from "./filter";
+/* harmony import */ var _filter__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./filter */ "./check/filter.ts");
 
-function main() {// TODO::载入数据
+
+
+function main() {
+  // TODO::载入数据
   // TODO::生成下来菜单
-  // const filter = new Filter();
-  // console.log(filter);
+  // 绑定星级修改事件
+  let star = document.getElementById("starSelect");
+  let pm = document.getElementById("pmSelect");
+  let btnS = document.getElementById("btnPmShow");
+  let btnG = document.getElementById("btnPmGet");
+  let btnC = document.getElementById("btnPmClean");
+
+  if (star) {
+    let f = new _filter__WEBPACK_IMPORTED_MODULE_1__.Filter(star, pm);
+    star.addEventListener("change", function () {
+      f.starChange();
+    });
+    btnS.addEventListener("click", function () {
+      // 设置到出现列表
+      f.UpdateSelect(pm.value, 1);
+    });
+    btnG.addEventListener("click", function () {
+      f.UpdateSelect(pm.value, 2);
+    });
+    btnC.addEventListener("click", function () {
+      if (confirm("是否清空?")) {
+        f.CleanSelect();
+      }
+    });
+  }
 }
 
 main();
+
+/***/ }),
+
+/***/ "./check/data/cards.ts":
+/*!*****************************!*\
+  !*** ./check/data/cards.ts ***!
+  \*****************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+// import {Card} from '../types/card'
+const data = {
+  '花漾海狮_2': {
+    id: '729',
+    star: 2,
+    name: '花漾海狮'
+  },
+  '迷你龙_1': {
+    id: '147',
+    star: 1,
+    name: '迷你龙'
+  },
+  '电击怪_1': {
+    id: '239',
+    star: 1,
+    name: '电击怪'
+  },
+  '西狮海壬_3': {
+    id: '730',
+    star: 3,
+    name: '西狮海壬'
+  },
+  '太阳伊布_3': {
+    id: '196',
+    star: 3,
+    name: '太阳伊布'
+  },
+  '球球海狮_1': {
+    id: '728',
+    star: 1,
+    name: '球球海狮'
+  },
+  '菊草叶_1': {
+    id: '152',
+    star: 1,
+    name: '菊草叶'
+  }
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (data);
+
+/***/ }),
+
+/***/ "./check/data/data.ts":
+/*!****************************!*\
+  !*** ./check/data/data.ts ***!
+  \****************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Data": () => (/* binding */ Data),
+/* harmony export */   "optionValue": () => (/* binding */ optionValue)
+/* harmony export */ });
+/* harmony import */ var _cards__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./cards */ "./check/data/cards.ts");
+
+const Season6 = {
+  season: 6,
+  name: "第六弹",
+  list: {
+    "A": [_cards__WEBPACK_IMPORTED_MODULE_0__["default"]["花漾海狮_2"], _cards__WEBPACK_IMPORTED_MODULE_0__["default"]["迷你龙_1"], _cards__WEBPACK_IMPORTED_MODULE_0__["default"]["电击怪_1"]],
+    "B": [_cards__WEBPACK_IMPORTED_MODULE_0__["default"]["西狮海壬_3"], _cards__WEBPACK_IMPORTED_MODULE_0__["default"]["太阳伊布_3"]],
+    "C": [_cards__WEBPACK_IMPORTED_MODULE_0__["default"]["球球海狮_1"]],
+    "D": [],
+    "E": [],
+    "F": [],
+    "G": [],
+    "H": []
+  }
+};
+const Season5 = {
+  season: 5,
+  name: "第五弹",
+  list: {
+    "A": [_cards__WEBPACK_IMPORTED_MODULE_0__["default"]["菊草叶_1"]],
+    "B": [],
+    "C": [],
+    "D": [],
+    "E": [],
+    "F": [],
+    "G": [],
+    "H": []
+  }
+};
+class Data {}
+Data.data = [Season6, Season5];
+function optionValue(c) {
+  return c.star + '_' + c.id + '_' + c.name;
+}
+
+/***/ }),
+
+/***/ "./check/filter.ts":
+/*!*************************!*\
+  !*** ./check/filter.ts ***!
+  \*************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Filter": () => (/* binding */ Filter)
+/* harmony export */ });
+/* harmony import */ var _data_data__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./data/data */ "./check/data/data.ts");
+/* harmony import */ var _table__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./table */ "./check/table.ts");
+
+
+/**
+ * 生成下来选单逻辑
+ */
+
+class Filter {
+  constructor(s, p) {
+    this.starPMs = {}; // 星级列表
+
+    this.selectList = []; // 已选宝可梦列表
+
+    this.sltStar = s;
+    this.sltPM = p;
+    this.initStarPMList();
+    this.table = new _table__WEBPACK_IMPORTED_MODULE_1__.Table();
+  }
+
+  starChange() {
+    for (let i = 0; i < this.sltPM.length; i++) {
+      // @ts-ignore
+      this.sltPM.removeChild(this.sltPM[i]);
+      this.sltPM.remove(i);
+    }
+
+    let cs = this.starPMs[Number(this.sltStar.value)];
+
+    if (cs) {
+      for (const c of cs) {
+        let option = document.createElement("option");
+        option.value = (0,_data_data__WEBPACK_IMPORTED_MODULE_0__.optionValue)(c);
+        option.text = c.id + '-' + c.name;
+        this.sltPM.appendChild(option);
+      }
+    }
+  }
+
+  initStarPMList() {
+    var _a, _b;
+
+    for (const s of _data_data__WEBPACK_IMPORTED_MODULE_0__.Data.data) {
+      for (const [_, cards] of Object.entries(s.list)) {
+        for (const pm of cards) {
+          var _a$_b, _this$starPMs$pm$star;
+
+          (_a$_b = (_a = this.starPMs)[_b = pm.star]) !== null && _a$_b !== void 0 ? _a$_b : _a[_b] = [];
+          (_this$starPMs$pm$star = this.starPMs[pm.star]) === null || _this$starPMs$pm$star === void 0 ? void 0 : _this$starPMs$pm$star.push(pm);
+        }
+      }
+    } // 排序 编号倒序
+
+
+    for (let [s, cards] of Object.entries(this.starPMs)) {
+      cards.sort(function (i, j) {
+        let a = Number(i.id);
+        let b = Number(j.id);
+        return b - a;
+      });
+      this.starPMs[s] = cards;
+    }
+  }
+
+  CleanSelect() {
+    this.selectList = [];
+  }
+
+  UpdateSelect(value, type) {
+    if (value === '') {
+      return;
+    }
+
+    let isset = false;
+
+    for (let v of this.selectList) {
+      if (value === v.value) {
+        isset = true;
+
+        if (type !== v.type) {
+          v.type = type;
+        }
+      }
+    }
+
+    if (!isset) {
+      this.selectList.push({
+        value,
+        type
+      });
+    }
+
+    this.table.DrawTable(this.selectList);
+  }
+
+}
+
+/***/ }),
+
+/***/ "./check/table.ts":
+/*!************************!*\
+  !*** ./check/table.ts ***!
+  \************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Table": () => (/* binding */ Table)
+/* harmony export */ });
+/* harmony import */ var _data_data__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./data/data */ "./check/data/data.ts");
+
+
+class Row {
+  constructor(title, cards, item) {
+    this.cardGroup = [];
+    this.score = 0; // 最终得分
+
+    this.title = title;
+    this.cards = cards;
+    this.item = item;
+    this.calculateScore(); // 算分
+  }
+
+  calculateScore() {
+    var _a;
+
+    let score = 0;
+    let vs = {};
+
+    for (const t of this.item) {
+      var _vs$_a;
+
+      (_vs$_a = vs[_a = t.value]) !== null && _vs$_a !== void 0 ? _vs$_a : vs[_a] = t;
+    }
+
+    for (let i = 0; i < this.cards.length; i++) {
+      let c = this.cards[i];
+      let v = (0,_data_data__WEBPACK_IMPORTED_MODULE_0__.optionValue)(c);
+
+      if (vs[v]) {
+        // 存在这个卡片
+        score += 20; // 同卡+20
+
+        this.cardGroup.push({
+          c: c,
+          s: vs[v]
+        });
+      } else {
+        this.cardGroup.push({
+          c: c
+        });
+      }
+    }
+
+    this.score = score;
+
+    if (this.score <= 0) {
+      return;
+    } // 检查连续, 连续多加分
+
+
+    for (let i = 0; i < this.cardGroup.length; i++) {
+      let g = this.cardGroup[i];
+
+      if (g && g.s !== undefined) {
+        // 被选中，检查后一个是否被选中
+        let next = i + 1;
+
+        if (next < this.cardGroup.length) {
+          let nn = this.cardGroup[next];
+
+          if (nn && nn.s !== undefined) {
+            score += 5;
+          }
+        }
+      }
+    }
+
+    this.score = score;
+  }
+
+  getScore() {
+    return this.score;
+  }
+
+}
+
+class Table {
+  constructor() {
+    const container = document.getElementById('check-container');
+    if (!container) throw "找不到初始容器";
+    this.checkContainer = container;
+  }
+
+  DrawTable(item) {
+    // 计算每组卡序分数
+    let list = [];
+
+    for (const s of _data_data__WEBPACK_IMPORTED_MODULE_0__.Data.data) {
+      for (const [idx, cards] of Object.entries(s.list)) {
+        let row = new Row(s.name + "_" + idx, cards, item);
+        list.push(row);
+      }
+    }
+
+    this.draw(list);
+  }
+
+  draw(l) {
+    this.checkContainer;
+
+    for (const r of l) {
+      console.log(r.getScore(), r);
+    }
+  }
+
+}
 
 /***/ }),
 
@@ -3879,7 +4240,7 @@ module.exports.formatError = function (err) {
 /******/ 	
 /******/ 	/* webpack/runtime/getFullHash */
 /******/ 	(() => {
-/******/ 		__webpack_require__.h = () => ("b13d294a38bbc48f96a4")
+/******/ 		__webpack_require__.h = () => ("52c6b0533943b42cc43f")
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/global */

@@ -1,4 +1,3 @@
-
 /**
  * 单卡卡片数据
  */
@@ -16,4 +15,7 @@ export interface Season {
     season: number; // 第n弹
     name: string; // 中文名称
     list: { [s: string]: Card[] }; // 卡片序列 从50-1倒序写入
+    [key: string]: any
 }
+
+type SItem<T, U> = { value: T, type: U };

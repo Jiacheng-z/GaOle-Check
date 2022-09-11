@@ -1,7 +1,7 @@
-import {Season} from '../types/card';
+import {Card, Season} from '../types/card';
 import card from "./cards";
 
-let Season6: Season = {
+const Season6: Season = {
     season: 6,
     name: "第六弹",
     list: {
@@ -46,4 +46,8 @@ export class Data {
     static data: Season[] = [
         Season6, Season5
     ]
+}
+
+export function optionValue(c: Card): string {
+    return c.star + '_' + c.id + '_' + c.name
 }
