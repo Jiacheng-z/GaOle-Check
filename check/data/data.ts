@@ -8,7 +8,11 @@ const Season6: Season = {
         "A": [
             card.花漾海狮_2,
             card.迷你龙_1,
-            card.电击怪_1
+            card.电击怪_1,
+            card.花漾海狮_2,
+            card.木木枭_1,
+            card.嘟嘟利_2,
+            card.鸭嘴火兽_2,
         ],
         "B": [
             card.西狮海壬_3,
