@@ -4,8 +4,6 @@ import {Filter} from "./filter";
 export var filterObj: any;
 
 function main() {
-    // TODO::载入数据
-    // TODO::生成下来菜单
 
     // 绑定星级修改事件
     let star = document.getElementById("starSelect") as HTMLSelectElement;
