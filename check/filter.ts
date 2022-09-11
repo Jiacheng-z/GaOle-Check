@@ -44,7 +44,18 @@ export class Filter {
             for (const [_, cards] of Object.entries(s.list)) {
                 for (const pm of cards) {
                     this.starPMs[pm.star] ??= [];
-                    this.starPMs[pm.star]?.push(pm)
+                    // 去除重复的
+                    let isset = false;
+                    let sps = this.starPMs[pm.star];
+                    // @ts-ignore
+                    for (const c of sps) {
+                        if (optionValue(c) === optionValue(pm)) {
+                            isset = true
+                        }
+                    }
+                    if (!isset) {
+                        this.starPMs[pm.star]?.push(pm)
+                    }
                 }
             }
         }
@@ -54,6 +65,17 @@ export class Filter {
             cards.sort(function (i, j) {
                 let a = Number(i.id);
                 let b = Number(j.id);
+                if (b == a) {
+                    if (i.name > j.name) {
+                        return -1
+                    }
+                    if (i.name === j.name) {
+                        return 0
+                    }
+                    if (i.name < j.name) {
+                        return 1
+                    }
+                }
                 return b - a;
             })
             this.starPMs[s] = cards
