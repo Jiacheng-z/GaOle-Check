@@ -5,7 +5,7 @@ export const checkModules = {
 export const checkChunks = {};
 
 export const checkHtmlChunksMap = {
-  'index/check.html': {
+  'check/check.html': {
     chunks: [
       checkModules.check,
     ],

@@ -1,7 +1,7 @@
 {
-  "name": "buffs",
+  "name": "ga-ole",
   "version": "1.0.0",
-  "description": "buff tts base on cactbot",
+  "description": "ga-ole check",
   "type": "module",
   "types": "./cactbot/types",
   "scripts": {
