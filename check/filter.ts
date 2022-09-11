@@ -63,6 +63,7 @@ export class Filter {
 
     public CleanSelect() {
         this.selectList = [];
+        this.table.DrawTable(this.selectList);
     }
 
     public UpdateSelect(value: string, type: number) {

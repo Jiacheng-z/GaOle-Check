@@ -1,7 +1,9 @@
 import {SItem, Card} from "./types/card";
 import {Data, optionValue} from "./data/data";
+import {Filter} from "./filter";
 
 class Row {
+    public _f: Filter;
     public title: string;
     private cards: Card[];
     private item: SItem<string, number>[];
@@ -10,6 +12,7 @@ class Row {
     public score: number = 0; // 最终得分
 
     constructor(title: string, cards: Card[], item: SItem<string, number>[]) {
+        this._f = f;
         this.title = title;
         this.cards = cards;
         this.item = item;
@@ -60,6 +63,79 @@ class Row {
     public getScore() {
         return this.score;
     }
+
+    public draw(): HTMLElement {
+        let div = document.createElement("div")
+        div.setAttribute("class", "col-6 tb-row")
+
+        let doc = document.createElement("table")
+        doc.setAttribute("class", "table table-hover g-6")
+        div.append(doc);
+
+        let body = document.createElement("tbody")
+
+        let i = 50;
+        for (const g of this.cardGroup) {
+            let trlight = "";
+            switch (g.c.star) {
+                case 5:
+                    trlight = " table-primary"
+                    break;
+                case 4:
+                    trlight = " table-warning"
+                    break;
+                default:
+                    break;
+            }
+
+            let tr = document.createElement("tr");
+            tr.setAttribute("class", "tr-row" + trlight)
+
+            let th = document.createElement("th");
+            th.setAttribute("class", "col-auto th-num")
+
+            th.innerText = String(i);
+            i--;
+
+            let td = document.createElement("td");
+            td.setAttribute("class", "col-auto td-pm")
+            td.innerText = g.c.star + '-' + g.c.name;
+
+
+            let tdp = document.createElement("td");
+            tdp.setAttribute("class", "col-auto td-pmp")
+
+            let btnc = "btn-outline-primary"
+            let btnText = "出现"
+            if (g.s !== undefined) {
+                if (g.s.type == 1) { // 已出现
+                    btnc = "btn-outline-success"
+                    btnText = "捕获"
+                }
+                if (g.s.type == 2) { // 已捕获
+                    btnc = "btn-outline-danger"
+                    btnText = "取消"
+                }
+            }
+
+            let btn = document.createElement("button");
+            btn.setAttribute("class", "btn " + btnc + " btn-sm td-btn")
+            btn.innerText = btnText
+            // TODO:: 绑定函数
+            btn.addEventListener("click", function () {
+                this._f.UpdateSelect(optionValue(g.c), 1)
+            })
+
+            tdp.append(btn);
+
+            tr.append(th, td, tdp);
+            body.append(tr);
+        }
+        doc.append(body);
+
+        console.log(doc);
+        return div;
+    }
 }
 
 export class Table {
@@ -87,9 +163,20 @@ export class Table {
     }
 
     private draw(l: Row[]) {
-        this.checkContainer;
+        l.sort(function (i, j) {
+            let a = i.getScore();
+            let b = j.getScore();
+            return b - a;
+        })
+        // 清空
+        this.checkContainer.innerHTML = "";
+
         for (const r of l) {
-            console.log(r.getScore(), r)
+            if (r.getScore() <= 0) {
+                continue
+            }
+            let tb = r.draw();
+            this.checkContainer.append(tb)
         }
     }
 }
