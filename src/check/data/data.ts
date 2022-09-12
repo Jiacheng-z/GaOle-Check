@@ -478,9 +478,9 @@ const Season2: Season = {
     name: "第二弹",
     list: {
         "A": [
-            card.嘎啦嘎啦_2,
+            card.嘎啦嘎啦_阿罗拉_2,
             card.火恐龙_2,
-            card.甜甜竹_1,
+            card.甜竹竹_1,
             card.杰尼龟_1,
             card.伦琴猫_3,
             card.暴飞龙_3,
@@ -489,15 +489,15 @@ const Season2: Season = {
             card.雷吉奇卡斯_5,
             card.妙蛙种子_1,
 
-            card.穿山王_3,
+            card.穿山王_阿罗拉_3,
             card.小火龙_1,
-            card.妙蛙花_3
-            card.穿山鼠_1,
+            card.妙蛙花_3,
+            card.穿山鼠_阿罗拉_1,
             card.小卡比兽_2,
             card.卡拉卡拉_1,
             card.可可多拉_1,
             card.甜冷美后_3,
-            card.穿山王_2,
+            card.穿山王_阿罗拉_2,
             card.杰尼龟_1,
 
             card.沙丘娃_1,
@@ -506,18 +506,18 @@ const Season2: Season = {
             card.伦琴猫_4,
             card.勒克猫_2,
             card.宝贝龙_1,
-            card.嘎啦嘎啦_3,
-            card.伪螳草_1
+            card.嘎啦嘎啦_阿罗拉_3,
+            card.伪螳草_1,
             card.鬃岩狼人_日_2,
             card.妙蛙种子_1,
 
             card.甜舞妮_2,
             card.阿尔宙斯_5,
-            card.鬃岩狼人_黑_2,
+            card.鬃岩狼人_月_2,
             card.铁哑铃_1,
             card.小卡比兽_1,
             card.鬃岩狼人_月_3,
-            card.卡拉卡拉_1
+            card.卡拉卡拉_1,
             card.小卡比兽_1,
             card.妙蛙草_2,
             card.兰螳花_2,
