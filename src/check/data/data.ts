@@ -473,6 +473,76 @@ const Season5: Season = {
     }
 }
 
+const Season2: Season = {
+    season: 2,
+    name: "第二弹",
+    list: {
+        "A": [
+            card.嘎啦嘎啦_2,
+            card.火恐龙_2,
+            card.甜甜竹_1,
+            card.杰尼龟_1,
+            card.伦琴猫_3,
+            card.暴飞龙_3,
+            card.可可多拉_1,
+            card.噬沙堡爷_2,
+            card.雷吉奇卡斯_5,
+            card.妙蛙种子_1,
+
+            card.穿山王_3,
+            card.小火龙_1,
+            card.妙蛙花_3
+            card.穿山鼠_1,
+            card.小卡比兽_2,
+            card.卡拉卡拉_1,
+            card.可可多拉_1,
+            card.甜冷美后_3,
+            card.穿山王_2,
+            card.杰尼龟_1,
+
+            card.沙丘娃_1,
+            card.波士可多拉_3,
+            card.噬沙堡爷_2,
+            card.伦琴猫_4,
+            card.勒克猫_2,
+            card.宝贝龙_1,
+            card.嘎啦嘎啦_3,
+            card.伪螳草_1
+            card.鬃岩狼人_白_2,
+            card.妙蛙种子_1,
+
+            card.甜舞妮_2,
+            card.阿尔宙斯_5,
+            card.鬃岩狼人_黑_2,
+            card.铁哑铃_1,
+            card.小卡比兽_1,
+            card.鬃岩狼人_黑_3,
+            card.卡拉卡拉_1
+            card.小卡比兽_1,
+            card.妙蛙草_2,
+            card.兰螳花_2,
+
+            card.可多拉_2,
+            card.小猫怪_1,
+            card.鬃岩狼人_白_4,
+            card.卡咪龟_2,
+            card.噬沙堡爷_3,
+            card.可多拉_2,
+            card.甲壳龙_2,
+            card.水箭龟_3,
+            card.金属怪_2,
+            card.岩狗狗_1,
+        ],
+        "B": [],
+        "C": [],
+        "D": [],
+        "E": [],
+        "F": [],
+        "G": [],
+        "H": [],
+    }
+}
+
 export class Data {
     static data: Season[] = [
         Season6, Season5
