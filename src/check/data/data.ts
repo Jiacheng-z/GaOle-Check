@@ -508,7 +508,7 @@ const Season2: Season = {
             card.宝贝龙_1,
             card.嘎啦嘎啦_3,
             card.伪螳草_1
-            card.鬃岩狼人_白_2,
+            card.鬃岩狼人_日_2,
             card.妙蛙种子_1,
 
             card.甜舞妮_2,
@@ -516,7 +516,7 @@ const Season2: Season = {
             card.鬃岩狼人_黑_2,
             card.铁哑铃_1,
             card.小卡比兽_1,
-            card.鬃岩狼人_黑_3,
+            card.鬃岩狼人_月_3,
             card.卡拉卡拉_1
             card.小卡比兽_1,
             card.妙蛙草_2,
@@ -524,7 +524,7 @@ const Season2: Season = {
 
             card.可多拉_2,
             card.小猫怪_1,
-            card.鬃岩狼人_白_4,
+            card.鬃岩狼人_日_4,
             card.卡咪龟_2,
             card.噬沙堡爷_3,
             card.可多拉_2,
