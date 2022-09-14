@@ -27,8 +27,21 @@ export interface Pokemon {
     form: string[]; // 形态列表 阿罗拉,起源,日,月,黄昏....
 }
 
+export function PShowName(p: Pokemon, star: number, form: string = ''): string {
+    // 判断是否存在
+    if (p.star.indexOf(star) < 0) {
+        throw new Error('无法生成宝可梦展示名称, 星级错误. PM:' + p.name + '(' + p.id + ')' + star + ';');
+    }
+    if (form !== '') {
+        if (p.form.indexOf(form) < 0) {
+            throw new Error('无法生成宝可梦展示名称, 形态错误. PM:' + p.name + '(' + p.id + ')' + form + ';');
+        }
+    }
+    return star + '-' + p.name + '(' + form + ')'
+}
+
 // 生成宝可梦卡片唯一ID
-export function PokemonUniqueId(p: Pokemon, star: number, form: string = ''): string {
+export function PUniqueId(p: Pokemon, star: number, form: string = ''): string {
     // 判断是否存在
     if (p.star.indexOf(star) < 0) {
         throw new Error('无法生成宝可梦唯一ID, 星级错误. PM:' + p.name + '(' + p.id + ')' + star + ';');
