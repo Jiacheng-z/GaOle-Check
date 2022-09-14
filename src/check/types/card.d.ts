@@ -7,7 +7,6 @@ export interface Card {
     name: string; // 宝可梦名称
 }
 
-
 /**
  * 一季度卡片
  */
@@ -19,3 +18,25 @@ export interface Season {
 }
 
 export type SItem<T, U> = { value: T, type: U };
+
+// -------------------
+export interface Pokemon {
+    id: string;
+    name: string;
+    star: number[]; // 宝可梦存在的星级
+    form: string[]; // 形态列表 阿罗拉,起源,日,月,黄昏....
+}
+
+// 生成宝可梦卡片唯一ID
+export function PokemonUniqueId(p: Pokemon, star: number, form: string = ''): string {
+    // 判断是否存在
+    if (p.star.indexOf(star) < 0) {
+        throw new Error('无法生成宝可梦唯一ID, 星级错误. PM:' + p.name + '(' + p.id + ')' + star + ';');
+    }
+    if (form !== '') {
+        if (p.form.indexOf(form) < 0) {
+            throw new Error('无法生成宝可梦唯一ID, 形态错误. PM:' + p.name + '(' + p.id + ')' + form + ';');
+        }
+    }
+    return p.id + '_' + star + '_' + form;
+}
