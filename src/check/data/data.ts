@@ -600,7 +600,7 @@ const Season2: Season = {
 
 export class Data {
     static data: Season[] = [
-        Season6, Season5
+        Season6, Season5, Season2
     ]
 }
 
