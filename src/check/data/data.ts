@@ -1385,8 +1385,9 @@ const Season3: Season = {
 
 export class Data {
     static data: Season[] = [
-        Season6, Season5, Season2, Season3
+        Season6, Season2
     ]
+    static tmp: Season[] = [Season3, Season5]
 }
 
 export function optionValue(c: Card): string {
