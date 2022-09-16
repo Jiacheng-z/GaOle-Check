@@ -7,6 +7,12 @@ export interface Card {
     name: string; // 宝可梦名称
 }
 
+export interface Card2 {
+    pm: Pokemon;
+    star: number;
+    form: string;
+}
+
 /**
  * 一季度卡片
  */
@@ -25,6 +31,23 @@ export interface Pokemon {
     name: string;
     star: number[]; // 宝可梦存在的星级
     form: string[]; // 形态列表 阿罗拉,起源,日,月,黄昏....
+}
+
+export function CCard(p: Pokemon, star: number, form: string = ''): Card2 {
+    if (p.star.indexOf(star) < 0) {
+        throw new Error('无法生成宝可梦卡片, 星级错误. PM:' + p.name + '(' + p.id + ')' + star + ';');
+    }
+    if (form !== '') {
+        if (p.form.indexOf(form) < 0) {
+            throw new Error('无法生成宝可梦卡片, 形态错误. PM:' + p.name + '(' + p.id + ')' + form + ';');
+        }
+    }
+
+    return {
+        pm: p,
+        star: star,
+        form: form,
+    };
 }
 
 export function PShowName(p: Pokemon, star: number, form: string = ''): string {
