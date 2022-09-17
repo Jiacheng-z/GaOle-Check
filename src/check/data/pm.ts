@@ -1,4 +1,5 @@
-import {Pokemon} from "../types/card";
+import {Pokemon, Season} from "../types/card";
+import card from "./cards";
 
 export const pm: { [s: string]: Pokemon } = {
     '水君': {
@@ -8,3 +9,5 @@ export const pm: { [s: string]: Pokemon } = {
         form: [], // 形态列表 阿罗拉,起源,日,月,黄昏....
     }
 } as const
+
+
