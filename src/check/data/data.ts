@@ -1,13 +1,6 @@
 import {Card, Season} from '../types/card';
 import card from "./cards";
 
-export class Data {
-    static data: Season[] = [
-        Season1, Season2, Season3, Season4, Season5, Season6, Season7
-    ]
-    static tmp: Season[] = []
-}
-
 export function optionValue(c: Card): string {
     return c.star + '_' + c.id + '_' + c.name
 }
@@ -3196,4 +3189,11 @@ const Season1: Season = {
             card.小火龙_1,
         ],
     }
+}
+
+export class Data {
+    static data: Season[] = [
+        Season1, Season2, Season3, Season4, Season5, Season6, Season7
+    ]
+    static tmp: Season[] = []
 }

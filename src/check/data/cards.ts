@@ -1,8 +1,5 @@
 // import {Card} from '../types/card'
 
-import {Card2, CCard} from "../types/card";
-import {pm} from "./pm";
-
 const data = {
     // ---------------------------- 5 -------------------------------
     '费洛美螂_5': {id: '795', star: 5, name: '费洛美螂',},
@@ -441,16 +438,3 @@ const data = {
 } as const
 
 export default data;
-
-export const data2
-    :
-    {
-        [s
-            :
-            string
-            ]:
-            Card2
-    }
-    = {
-    '水君_4': CCard(pm.水君, 4)
-}
