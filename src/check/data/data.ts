@@ -27,6 +27,7 @@ const Season7: Season = {
             card.代欧奇希斯_速度_5,
             card.猫老大_3,
             card.暴鲤龙_3,
+
             card.冰伊布_3,
             card.魔墙人偶_3,
             card.水晶灯火灵_3,
@@ -37,6 +38,7 @@ const Season7: Season = {
             card.甜竹竹_1,
             card.喵喵_1,
             card.三合一磁怪_2,
+
             card.朝北鼻_1,
             card.魔墙人偶_3,
             card.烛光灵_1,
@@ -47,6 +49,7 @@ const Season7: Season = {
             card.喵喵_1,
             card.大岩蛇_2,
             card.魔尼尼_1,
+
             card.猛火猴_2,
             card.皮卡丘_3,
             card.灯火幽灵_2,
@@ -57,6 +60,7 @@ const Season7: Season = {
             card.大朝北鼻_3,
             card.小火焰猴_1,
             card.大朝北鼻_3,
+
             card.甜舞妮_2,
             card.甜冷美后_3,
             card.大钢蛇_4,
@@ -79,6 +83,7 @@ const Season7: Season = {
             card.帝王拿波_4,
             card.猫老大_3,
             card.灯火幽灵_2,
+
             card.小火焰猴_1,
             card.蚊香君_2,
             card.猫老大_3,
@@ -89,6 +94,7 @@ const Season7: Season = {
             card.波加曼_1,
             card.波皇子_2,
             card.蚊香蛙皇_3,
+
             card.三合一磁怪_2,
             card.烈焰猴_4,
             card.仙子伊布_4,
@@ -100,6 +106,7 @@ const Season7: Season = {
             card.帝王拿波_3,
             card.魔墙人偶_3,
             card.小磁怪_1,
+
             card.朝北鼻_1,
             card.土地云_4,
             card.草苗龟_1,
@@ -109,6 +116,7 @@ const Season7: Season = {
             card.皮卡丘_3,
             card.烛光灵_1,
             card.魔尼尼_1,
+
             card.小火焰猴_1,
             card.大朝北鼻_3,
             card.魔尼尼_1,
@@ -117,7 +125,7 @@ const Season7: Season = {
             card.化石翼龙_3,
             card.蚊香蝌蚪_1,
             card.灯火幽灵_2,
-            card.自爆磁怪_3,
+            card.自爆磁怪_4,
             card.喵喵_1,
         ],
         "C": [
@@ -131,6 +139,7 @@ const Season7: Season = {
             card.魔墙人偶_3,
             card.土地云_灵兽_4,
             card.皮卡丘_3,
+
             card.甜舞妮_2,
             card.暴鲤龙_3,
             card.小火焰猴_1,
@@ -141,6 +150,7 @@ const Season7: Season = {
             card.代欧奇希斯_攻击_5,
             card.甜竹竹_1,
             card.树林龟_2,
+
             card.魔尼尼_1,
             card.猫老大_3,
             card.朝北鼻_1,
@@ -151,6 +161,7 @@ const Season7: Season = {
             card.蚊香蝌蚪_1,
             card.蚊香君_2,
             card.猫老大_3,
+
             card.小火焰猴_1,
             card.魔墙人偶_3,
             card.甜冷美后_3,
@@ -161,6 +172,7 @@ const Season7: Season = {
             card.灯火幽灵_2,
             card.喵喵_1,
             card.土台龟_3,
+
             card.甜舞妮_2,
             card.甜冷美后_4,
             card.魔尼尼_1,
@@ -183,6 +195,7 @@ const Season7: Season = {
             card.喵喵_1,
             card.烛光灵_1,
             card.蚊香君_2,
+
             card.基格尔德_4,
             card.大钢蛇_3,
             card.波皇子_2,
@@ -193,6 +206,7 @@ const Season7: Season = {
             card.暴鲤龙_4,
             card.甜竹竹_1,
             card.帝牙卢卡_5,
+
             card.猛火猴_2,
             card.自爆磁怪_3,
             card.三合一磁怪_2,
@@ -203,6 +217,7 @@ const Season7: Season = {
             card.三合一磁怪_2,
             card.小磁怪_1,
             card.帝王拿波_3,
+
             card.路卡利欧_4,
             card.皮卡丘_3,
             card.草苗龟_1,
@@ -213,6 +228,7 @@ const Season7: Season = {
             card.魔尼尼_1,
             card.波加曼_1,
             card.波皇子_2,
+
             card.甜舞妮_2,
             card.水晶灯火灵_3,
             card.烈空坐_5,
@@ -235,6 +251,7 @@ const Season7: Season = {
             card.烈焰猴_3,
             card.路卡利欧_4,
             card.波加曼_1,
+
             card.猫老大_3,
             card.烛光灵_1,
             card.猛火猴_2,
@@ -245,6 +262,7 @@ const Season7: Season = {
             card.皮卡丘_3,
             card.龙卷云_4,
             card.大岩蛇_2,
+
             card.魔墙人偶_3,
             card.代欧奇希斯_防御_5,
             card.烛光灵_1,
@@ -255,6 +273,7 @@ const Season7: Season = {
             card.皮卡丘_3,
             card.草苗龟_1,
             card.树林龟_2,
+
             card.灯火幽灵_2,
             card.大朝北鼻_3,
             card.蚊香蛙皇_3,
@@ -264,6 +283,7 @@ const Season7: Season = {
             card.朝北鼻_1,
             card.甜舞妮_2,
             card.魔尼尼_1,
+
             card.小磁怪_1,
             card.基格尔德_5,
             card.基格尔德_3,
@@ -287,6 +307,7 @@ const Season7: Season = {
             card.自爆磁怪_3,
             card.猫老大_3,
             card.暴鲤龙_4,
+
             card.烈焰猴_3,
             card.朝北鼻_1,
             card.大朝北鼻_3,
@@ -297,6 +318,7 @@ const Season7: Season = {
             card.蚊香蝌蚪_1,
             card.水晶灯火灵_3,
             card.爆焰龟兽_3,
+
             card.雷电云_灵兽_4,
             card.铁火辉夜_5,
             card.小火焰猴_1,
@@ -307,6 +329,7 @@ const Season7: Season = {
             card.灯火幽灵_2,
             card.小磁怪_1,
             card.波皇子_2,
+
             card.蚊香君_2,
             card.魔尼尼_1,
             card.土地云_4,
@@ -317,6 +340,7 @@ const Season7: Season = {
             card.猫老大_3,
             card.叶伊布_4,
             card.土台龟_4,
+
             card.皮卡丘_3,
             card.波皇子_2,
             card.草苗龟_1,
@@ -339,6 +363,7 @@ const Season7: Season = {
             card.皮卡丘_3,
             card.小磁怪_1,
             card.小磁怪_1,
+
             card.波皇子_2,
             card.蚊香蝌蚪_1,
             card.甜冷美后_3,
@@ -349,6 +374,7 @@ const Season7: Season = {
             card.土台龟_3,
             card.仙子伊布_3,
             card.灯火幽灵_2,
+
             card.仙子伊布_4,
             card.灯火幽灵_2,
             card.大朝北鼻_3,
@@ -359,6 +385,7 @@ const Season7: Season = {
             card.猛火猴_2,
             card.大朝北鼻_3,
             card.喵喵_1,
+
             card.化石翼龙_4,
             card.路卡利欧_4,
             card.三合一磁怪_2,
@@ -369,6 +396,7 @@ const Season7: Season = {
             card.蚊香君_2,
             card.化石翼龙_3,
             card.树林龟_2,
+
             card.草苗龟_1,
             card.基格尔德_3,
             card.波加曼_1,
@@ -391,6 +419,7 @@ const Season7: Season = {
             card.龙卷云_4,
             card.小磁怪_1,
             card.水晶灯火灵_3,
+
             card.路卡利欧_4,
             card.猫老大_3,
             card.爆焰龟兽_4,
@@ -401,6 +430,7 @@ const Season7: Season = {
             card.蚊香君_2,
             card.魔尼尼_1,
             card.甜舞妮_2,
+
             card.自爆磁怪_3,
             card.猛火猴_2,
             card.冰伊布_4,
@@ -411,6 +441,7 @@ const Season7: Season = {
             card.蚊香蝌蚪_1,
             card.小火焰猴_1,
             card.蚊香蝌蚪_1,
+
             card.大钢蛇_3,
             card.树林龟_2,
             card.波加曼_1,
@@ -421,6 +452,7 @@ const Season7: Season = {
             card.大钢蛇_4,
             card.烛光灵_1,
             card.爆焰龟兽_3,
+
             card.魔墙人偶_3,
             card.猫老大_3,
             card.蚊香蛙皇_3,
