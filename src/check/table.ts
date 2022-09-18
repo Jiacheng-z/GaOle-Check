@@ -33,7 +33,23 @@ class Row {
             let c = this.cards[i] as Card;
             let v = optionValue(c)
             if (vs[v]) { // 存在这个卡片
-                score += 20; // 同卡+20
+                switch (c.star) { // 增加分数
+                    case 5:
+                        score += 34;
+                        break;
+                    case 4:
+                        score += 8;
+                        break;
+                    case 3:
+                        score += 3;
+                        break;
+                    case 2:
+                        score += 2;
+                        break;
+                    default:
+                        score += 1;
+                        break;
+                }
                 this.cardGroup.push({c: c, s: vs[v]})
             } else {
                 this.cardGroup.push({c: c})
@@ -51,8 +67,8 @@ class Row {
                 let next = i + 1;
                 if (next < this.cardGroup.length) {
                     let nn = this.cardGroup[next];
-                    if (nn && nn.s !== undefined) {
-                        score += 5;
+                    if (nn && nn.s !== undefined) { // 相邻卡片多加分数
+                        score += 2;
                     }
                 }
             }
@@ -186,7 +202,7 @@ export class Table {
         // 计算每组卡序分数
         let list: Row[] = [];
 
-        for (const s of Data.data) {
+        for (const s of Data.getData()) {
             for (const [idx, cards] of Object.entries(s.list)) {
                 let row = new Row(s.name + "_" + idx, cards, item);
                 list.push(row);

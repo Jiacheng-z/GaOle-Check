@@ -40,7 +40,7 @@ export class Filter {
     }
 
     private initStarPMList() {
-        for (const s of Data.data) {
+        for (const s of Data.getData()) {
             for (const [_, cards] of Object.entries(s.list)) {
                 for (const pm of cards) {
                     this.starPMs[pm.star] ??= [];

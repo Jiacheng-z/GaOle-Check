@@ -3196,4 +3196,21 @@ export class Data {
         Season1, Season2, Season3, Season4, Season5, Season6, Season7
     ]
     static tmp: Season[] = []
+
+    static getData(): Season[] {
+        const params = new URLSearchParams(window.location.search);
+        let ps = params.get('s');
+        if (ps === null || ps === '') {
+            ps = '1,2,3,4,5,6,7'
+        }
+        const se = ps.split(',');
+        let ret: Season[] = [];
+        for (const s of this.data) {
+            console.log(se.indexOf(String(s.season)));
+            if (se.indexOf(String(s.season)) >= 0) {
+                ret.push(s)
+            }
+        }
+        return ret;
+    }
 }
