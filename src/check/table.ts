@@ -134,6 +134,11 @@ class Row {
             td.setAttribute("class", "col-auto td-pm")
             td.innerText = g.c.star + '-' + g.c.name;
 
+            // <span class="sprite-icon sprite-icon-229" title="黑鲁加"></span>
+            let span = document.createElement("span");
+            let num = g.c.id.padStart(3, '0')
+            span.setAttribute("class", "float-sm-end sprite-icon sprite-icon-"+num)
+            td.append(span)
 
             let tdp = document.createElement("td");
             tdp.setAttribute("class", "col-auto td-pmp")
@@ -178,7 +183,7 @@ class Row {
 
             tdp.append(btn);
 
-            tr.append(th, td, tdp);
+            tr.append(th, td,tdp);
             body.append(tr);
         }
         doc.append(thead, body);

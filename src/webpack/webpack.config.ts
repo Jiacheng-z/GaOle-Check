@@ -1,7 +1,7 @@
 import path from 'path';
 
 import { CleanWebpackPlugin } from 'clean-webpack-plugin';
-// import CopyPlugin from 'copy-webpack-plugin';
+import CopyPlugin from 'copy-webpack-plugin';
 import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import isCI from 'is-ci';
@@ -46,14 +46,14 @@ export default (
     new CleanWebpackPlugin(),
     new MiniCssExtractPlugin(),
     ...htmlPluginRules,
-    // new CopyPlugin({
-    //   patterns: [
-    //     // {
-    //     //   // copy sounds and images
-    //     //   from: 'resources/images/**/*',
-    //     // }
-    //   ],
-    // }),
+    new CopyPlugin({
+      patterns: [
+        {
+          // copy sounds and images
+          from: 'check/media/**/*',
+        }
+      ],
+    }),
   ];
 
   if (!isCI)
