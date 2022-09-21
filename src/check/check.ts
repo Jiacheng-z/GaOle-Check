@@ -11,7 +11,7 @@ function main() {
     let pm = document.getElementById("pmSelect") as HTMLSelectElement;
     let btnS = document.getElementById("btnPmShow") as HTMLButtonElement;
     let btnG = document.getElementById("btnPmGet") as HTMLButtonElement;
-    let btnC = document.getElementById("btnPmClean") as HTMLButtonElement;
+    // let btnC = document.getElementById("btnPmClean") as HTMLButtonElement;
 
     if (star) {
         let f = new Filter(star, pm);
@@ -27,11 +27,11 @@ function main() {
         btnG.addEventListener("click", function () {
             f.UpdateSelect(pm.value, 2);
         })
-        btnC.addEventListener("click", function () {
-            if (confirm("是否清空?")) {
-                f.CleanSelect();
-            }
-        })
+        // btnC.addEventListener("click", function () {
+        //     if (confirm("是否清空?")) {
+        //         f.CleanSelect();
+        //     }
+        // })
     }
 }
 

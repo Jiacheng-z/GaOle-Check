@@ -1,14 +1,19 @@
 #check-filter {
     margin-top: 5px;
-    margin-left: 5px;
+    margin-left: 10px;
 }
 
-.tb-row{
+.tb-row {
     padding-right: 2px;
     padding-left: 2px;
 }
 
-.tb-pm{
-    padding-right: 1px;
-    padding-left: 1px;
+.table th {
+    text-align: center;
+    vertical-align: middle !important;
+}
+
+#check-container {
+    margin-left: 0;
+    margin-right: 0;
 }

@@ -88,7 +88,10 @@ class Row {
         let doc = document.createElement("table")
         doc.setAttribute("class", "table table-hover g-2")
         div.append(doc);
+
         let thead = document.createElement("thead");
+        thead.setAttribute("class", "table-light")
+
         let tr = document.createElement("tr");
         let th1 = document.createElement("th")
         let th2 = document.createElement("th")
@@ -131,6 +134,7 @@ class Row {
 
             let td = document.createElement("td");
             td.setAttribute("class", "col-auto td-pm")
+            td.setAttribute("style", "padding-left: 0px;padding-right: 0px;padding-bottom: 0px;")
             switch (g.c.star) {
                 case 5:
                     td.innerHTML = `<span class="badge rounded-pill bg-danger">` + g.c.star + `</span>&nbsp;&nbsp;` + g.c.name;
@@ -155,11 +159,12 @@ class Row {
             // <span class="sprite-icon sprite-icon-229" title="黑鲁加"></span>
             let span = document.createElement("span");
             let num = g.c.id.padStart(3, '0')
-            span.setAttribute("class", "float-sm-end sprite-icon sprite-icon-" + num)
+            span.setAttribute("class", "float-end sprite-icon sprite-icon-" + num)
             td.append(span)
 
-            let tdp = document.createElement("td");
+            let tdp = document.createElement("th");
             tdp.setAttribute("class", "col-auto td-pmp")
+            // tdp.setAttribute("style", "padding-left: 0px;padding-right: 0px;")
 
             let btnc = "btn-outline-primary"
             let btnText = "出现"
@@ -227,7 +232,7 @@ export class Table {
 
         for (const s of Data.getData()) {
             for (const [idx, cards] of Object.entries(s.list)) {
-                let row = new Row(s.name + "_" + idx, cards, item);
+                let row = new Row(s.name + " " + idx, cards, item);
                 list.push(row);
             }
         }

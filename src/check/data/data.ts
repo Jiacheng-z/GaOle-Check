@@ -3206,7 +3206,6 @@ export class Data {
         const se = ps.split(',');
         let ret: Season[] = [];
         for (const s of this.data) {
-            console.log(se.indexOf(String(s.season)));
             if (se.indexOf(String(s.season)) >= 0) {
                 ret.push(s)
             }
