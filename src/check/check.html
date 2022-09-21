@@ -10,8 +10,9 @@
 <body>
 <div id="container">
     <div id="check-filter">
-        <form class="row g-3">
-            <div class="row g-3">
+
+        <form class="row g-1">
+            <div class="row g-1">
                 <div class="col-auto">
                     <select class="form-select form-select" id="starSelect" aria-label="星级">
                         <option value="-1" selected>星级</option>
@@ -26,20 +27,19 @@
                     <select class="form-select form-select" id="pmSelect" aria-label="宝可梦"></select>
                 </div>
             </div>
-            <div class="row g-3">
+            <div class="row g-2">
                 <div class="col-auto">
                     <button type="button" class="btn btn-primary btn" id="btnPmShow">出现</button>
                 </div>
                 <div class="col-auto">
                     <button type="button" class="btn btn-success btn" id="btnPmGet">捕获</button>
                 </div>
-                <div class="col-auto pull-right" style="margin-left: 50px;">
+                <div class="col-auto float-sm-end" style="margin-left: 50px;">
                     <button type="button" class="btn btn-danger btn" id="btnPmClean">清空</button>
                 </div>
             </div>
         </form>
     </div>
-<!--    <div id="check-list"></div>-->
     <div class="row" id="check-container">
     </div>
 </div>

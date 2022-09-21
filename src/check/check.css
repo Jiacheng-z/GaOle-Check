@@ -5,4 +5,10 @@
 
 .tb-row{
     padding-right: 2px;
+    padding-left: 2px;
+}
+
+.tb-pm{
+    padding-right: 1px;
+    padding-left: 1px;
 }

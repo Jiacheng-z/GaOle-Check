@@ -86,7 +86,7 @@ class Row {
         div.setAttribute("class", "col-6 tb-row")
 
         let doc = document.createElement("table")
-        doc.setAttribute("class", "table table-hover g-6")
+        doc.setAttribute("class", "table table-hover g-2")
         div.append(doc);
         let thead = document.createElement("thead");
         let tr = document.createElement("tr");
@@ -126,18 +126,36 @@ class Row {
 
             let th = document.createElement("th");
             th.setAttribute("class", "col-auto th-num")
-
             th.innerText = String(i);
             i--;
 
             let td = document.createElement("td");
             td.setAttribute("class", "col-auto td-pm")
-            td.innerText = g.c.star + '-' + g.c.name;
+            switch (g.c.star) {
+                case 5:
+                    td.innerHTML = `<span class="badge rounded-pill bg-danger">` + g.c.star + `</span>&nbsp;&nbsp;` + g.c.name;
+                    break;
+                case 4:
+                    td.innerHTML = `<span class="badge rounded-pill bg-success">` + g.c.star + `</span>&nbsp;&nbsp;` + g.c.name;
+                    break;
+                case 3:
+                    td.innerHTML = `<span class="badge rounded-pill bg-warning">` + g.c.star + `</span>&nbsp;&nbsp;` + g.c.name;
+                    break;
+                case 2:
+                    td.innerHTML = `<span class="badge rounded-pill bg-light text-dark">` + g.c.star + `</span>&nbsp;&nbsp;` + g.c.name;
+                    break;
+                case 1:
+                    td.innerHTML = `<span class="badge rounded-pill bg-light text-dark">` + g.c.star + `</span>&nbsp;&nbsp;` + g.c.name;
+                    break;
+                default:
+                    td.innerHTML = `<span class="badge rounded-pill bg-light text-dark">` + g.c.star + `</span>&nbsp;&nbsp;` + g.c.name;
+                    break;
+            }
 
             // <span class="sprite-icon sprite-icon-229" title="黑鲁加"></span>
             let span = document.createElement("span");
             let num = g.c.id.padStart(3, '0')
-            span.setAttribute("class", "float-sm-end sprite-icon sprite-icon-"+num)
+            span.setAttribute("class", "float-sm-end sprite-icon sprite-icon-" + num)
             td.append(span)
 
             let tdp = document.createElement("td");
@@ -183,7 +201,7 @@ class Row {
 
             tdp.append(btn);
 
-            tr.append(th, td,tdp);
+            tr.append(th, td, tdp);
             body.append(tr);
         }
         doc.append(thead, body);
